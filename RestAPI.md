@@ -93,11 +93,12 @@ Authorization: ApiKey 123456
 ---
 
 ## 9. Richardson Maturity Model
-- Level 2:
+- Level 3:
     - Uses proper HTTP methods (GET, POST, PUT, DELETE)
     - Uses resource URIs
     - JSON responses
-
+    - Uses HATEOAS
+  
 ---
 
 ## Example JSON for Book
@@ -105,8 +106,11 @@ Authorization: ApiKey 123456
 {
   "id": 1,
   "title": "The Catcher in the Rye",
-  "authorId": 2,
-  "categoryId": 3,
-  "publishedYear": 1951
+  "authorId": 3,
+  "_links": {
+    "self": {"href": "/books/1"},
+    "author": {"href": "/authors/3"},
+    "category": {"href": "/categories/2"}
+  }
 }
 ```
